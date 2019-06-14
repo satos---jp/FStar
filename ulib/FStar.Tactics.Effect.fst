@@ -126,6 +126,12 @@ let assert_by_tactic (p:Type) (t:unit -> Tac unit)
          (ensures (fun _ -> p))
   = ()
 
+let run_tactic (t:unit -> Tac unit)
+  : Pure unit
+         (requires (set_range_of (with_tactic t True) (range_of t)))
+         (ensures (fun _ -> True))
+  = ()
+
 (* We don't peel off all `with_tactic`s in negative positions, so give the SMT a way to reason about them *)
 val by_tactic_seman : a:Type -> tau:(unit -> Tac a) -> phi:Type -> Lemma (with_tactic tau phi ==> phi)
                                                                          [SMTPat (with_tactic tau phi)]
