@@ -324,6 +324,9 @@ let psmap_find_map (m:psmap<'value>) f =
   Collections.Map.tryPick f m
 let psmap_modify (m:psmap<'value>) (k: string) (upd: option<'value> -> 'value) =
   Collections.Map.add k (upd <| Collections.Map.tryFind k m) m
+let psmap_merge (m1:psmap<'value>) (m2:psmap<'value>) =
+  (* Slow :( *)
+  psmap_fold m1 (fun k v m -> psmap_add m k v) m2
 
 type imap<'value>=System.Collections.Generic.Dictionary<int,'value>
 let imap_create<'value> (i:int) = new Dictionary<int,'value>(i)
