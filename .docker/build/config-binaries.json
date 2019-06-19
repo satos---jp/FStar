@@ -3,8 +3,6 @@
 
     "BaseContainerIsEverestImage" : true,
     "BaseContainerImageName" : "fstar",
-    "BaseContainerImageTagOrCommitId": "latest",
-    "BranchName" : "santiago_fix_binaries",
     "GithubCommitUrl" : "https://github.com/FStarLang/FStar/commit",
     "OnDemandBuildDefinition" : "FStar\\FStar-{agentOS}",
 
